@@ -1,0 +1,153 @@
+extends layout
+
+
+
+block content
+    -data = data || {}
+
+    if errors
+        ul.my-errors
+            for error in errors
+                li= error.msg
+    
+
+
+    p.p1 Add new item:
+    form(id="fash" class="form-inline i1 s1" action="/fashion" method="POST")
+        
+        label(for="_id")
+        input(
+            type="hidden"
+            name="_id"
+            id="_id"
+            class="form-control"
+            value="new"
+        )
+
+        label(for="brand") 
+        input.i1(
+            placeholder = "Brand"
+            type="text"
+            id="brand"
+            name="brand"
+            class="form-control"
+            value = data.brand
+            required
+        )
+
+        label(for="item") 
+        input.i1(
+            placeholder = "Item"
+            type="text"
+            id="item"
+            name="item"
+            class="form-control"
+            value = data.item
+            required
+        )
+        
+        label(for="assigned") 
+        select(id="assigned", name="assigned", placeholder= "Assigned?", class="form-control" required)
+            option(selected disabled="true") Assigned?
+            option(value= 'true') Yes
+            option(value='false') No
+           
+        
+        label(for="model") 
+        input.i1(
+            placeholder = "Model (Full Name)"
+            type="text"
+            id="model"
+            name="model"
+            class="form-control"
+            value = data.model
+        )
+
+        label(for="scene")
+        input.i1(
+            placeholder = "Scene"
+            type="number"
+            id="scene"
+            name="scene"
+            class="form-control"
+            value = data.scene
+        )
+        label(for="song")
+        input.i1(
+            placeholder = "Song"
+            type="number"
+            id="song"
+            name="song"
+            class="form-control"
+            value = data.song
+
+
+        )
+        label(for="returned")
+        select(name="returned", placeholder= "Returned?", class="form-control" required)
+            option(selected disabled="true") Returned?
+            option(value= 'true') Yes
+            option(value='false') No
+
+        input(
+            type="submit" 
+            href = '/fashion' 
+            value="+"
+            class="btn btn-lg btn-primarybtn-block b1"
+        )
+    div
+        if fashions.length
+            table.listing-table.table-dark.table-striped
+                tr
+                    th Brand
+                    th Item
+                    th(id="AA") Assigned?
+                    th Model
+                    th Scene
+                    th Song
+                    th Returned? (yes or no)
+                    th Options
+                each fashion in fashions
+                    //- var row_id = fashion.id
+                    tr(id = fashion._id)
+                        td(class = "row_data" col_name="brand" contenteditable = "true")= fashion.brand
+                        td(class = "row_data" col_name="item" contenteditable = "true")= fashion.item
+                        td(class = "row_data" col_name="assigned")
+                            case fashion.assigned
+                                when true: value= "yes"
+                                when false: value= "no" 
+                        td(class = "row_data" col_name="model" contenteditable = "true")= fashion.model
+                        td(class = "row_data" col_name="scene" contenteditable = "true")=fashion.scene
+                        td(class = "row_data" col_name="song" contenteditable = "true")=fashion.song
+                        td(class = "row_data" col_name="returned" contenteditable = "true")
+                            case fashion.returned
+                                when true: value= "yes"
+                                when false: value= "no"
+                        td 
+                            //- /*span(class="btn_edit") onclick= "return clickFun();
+                            //-     a(href="#" class="btn btn-link " row_id= fashion._id) Edit
+                            span(id="save" class="btn_save")
+                                a(href="#" id= "sssave" name = "ssave" class="btn btn-link" row_id= fashion._id value=fashion._id) Save
+                                
+                            span(class="btn_cancel")
+                                a(href="/fashion" name="hidden" class="btn btn-link" row_id= fashion._id) Cancel
+                            
+        else
+            p No entries yet 
+
+    script(type='text/javascript').
+        var myVar = "Hello Var";
+        console.log(myVar);
+
+    script(src= "http://code.jquery.com/jquery-3.3.1.min.js")
+    script(src = "https://requirejs.org/docs/release/2.3.6/r.js")
+    script(src = "/js/tester.js")
+    //- script
+    //-     const y = document .getElementById("AA");   
+    //-         y.style.color = "red";
+
+    //- //- script(type='text/javascript' src = "views/tester.js")
+
+
+
+

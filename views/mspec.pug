@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    p.p2 Model: #{name}
+    if fashions.length
+        table.listing-table.table-dark.table-striped
+        
+            tr
+                th Brand
+                th Item
+                th Scene
+                th Song
+                th Returned?
+            each m in fashions
+                tr
+                    td= m.brand
+                    td= m.item
+                    td= m.scene
+                    td= m.song
+                    case m.returned
+                        when true: td= "yes"
+                        when false: td= "no" 
+
+    else
+        p Problem loading models

@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+    {% if fashions.length %}
+
+        <table class= "listing-table.table-dark.table-striped">
+            <tr>
+                <th>Brands</th>
+            </tr>
+            {% for m in fashions %}
+            <tr>
+                <td>
+                    <a href="/bspec/"+{{m._id}} class="a1"> m._id</a>
+                </td>
+            </tr>
+        
+        </table>
+    {% else %}
+        <p>Problem loading brands</p>
+{% end block %}

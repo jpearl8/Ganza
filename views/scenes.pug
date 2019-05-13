@@ -1,0 +1,64 @@
+extends layout
+
+block content
+    -data = data || {}
+
+    if errors
+        ul.my-errors
+            for error in errors
+                li= error.msg
+
+    p.p1 Search:
+    form(class="form-inline f1" action="/scenes" method="POST")
+        label(for="scene") 
+        select(id="scene", name="scene", class="form-control")
+            option(selected disabled="true") Scene
+            option(value= '1') 1
+            option(value='2') 2
+            option(value='3') 3
+
+        label(for="song") 
+        select(id="song", name="song", class="form-control")
+            option(selected disabled="true") Song
+            option(value= '1') 1
+            option(value='2') 2
+            option(value='3') 3
+            option(value= '4') 4
+            option(value='5') 5
+            option(value='6') 6
+            option(value= '7') 7
+            option(value='8') 8
+            option(value='9') 9
+            option(value= '10') 10
+
+        input(
+            type="submit" 
+            value="Lookup"
+            class="btn btn-lg btn-primarybtn-block b1 b2"
+        )
+    div
+        if fashions.length
+                table.listing-table.table-dark.table-striped
+                    tr
+                        th Brand
+                        th Item
+                        th Assigned?
+                        th Model
+                        th Scene
+                        th Song
+                        th Returned?
+                    each fashion in fashions
+                        tr
+                            td= fashion.brand
+                            td= fashion.item
+                            case fashion.assigned
+                                when true: td= "yes"
+                                when false: td= "no" 
+                            td= fashion.model
+                            td=fashion.scene
+                            td=fashion.song
+                            case fashion.returned
+                                when true: td= "yes"
+                                when false: td= "no"
+        else
+            p No entries yet

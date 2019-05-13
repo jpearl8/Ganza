@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title= `${title}`
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/styles.css')
+
+  body
+    div.container.listing-reg
+
+      h1
+        a.i2(href ='/')
+          img.i2(
+            src = "/css/gpic.png" 
+            onmouseover = "this.src='/css/gpic_1.png'"
+            onmouseout = "this.src='/css/gpic.png'")
+
+      block content

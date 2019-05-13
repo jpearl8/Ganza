@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    p.p2 Brand: #{brand}
+    if fashions.length
+        table.listing-table.table-dark.table-striped
+        
+            tr
+                th Item
+                th Model
+                th Scene
+                th Song
+                th Returned?
+            each m in fashions
+                tr
+                    td= m.item
+                    td= m.model
+                    td= m.scene
+                    td= m.song
+                    td= m.returned
+
+    else
+        p Problem loading brands

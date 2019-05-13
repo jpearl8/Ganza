@@ -1,0 +1,27 @@
+{
+  "name": "ganza2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "nodemon ./start.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.2.0",
+    "express-validator": "^5.3.1",
+    "http-auth": "^3.2.3",
+    "jquery": "^3.3.1",
+    "mongoose": "^5.4.3",
+    "pug": "^2.0.3",
+    "require": "^2.4.20",
+    "requirejs": "^2.3.6"
+  }
+}

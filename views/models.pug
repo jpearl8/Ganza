@@ -1,0 +1,23 @@
+extends layout
+
+block content
+
+        if fashions.length
+            table.listing-table.table-dark.table-striped
+                tr
+                    th Models
+                each m in fashions
+                    tr
+                        td
+                            a.a1(href= '/mspec/' + m._id)= m._id
+                            
+                            
+                            
+                            
+                            
+                        
+                        
+
+
+        else
+            p Problem loading models

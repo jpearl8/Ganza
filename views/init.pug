@@ -1,0 +1,37 @@
+extends layout
+
+block content
+
+    if errors
+        ul.my-errors
+            for error in errors
+                li= error.msg
+    
+    form(action='/' method="GET")
+        body.test
+            a(
+                class="btn btn-lg btn-primarybtn-block b3"
+                type = "button"
+                href = '/models'    
+            ) Models
+            
+            a(
+                class="btn btn-lg btn-primarybtn-block b3"
+                type = "button"
+                href = '/brands'    
+            ) Brands
+            
+            a(
+                class="btn btn-lg btn-primarybtn-block b3"
+                type = "button"
+                href = '/scenes'    
+            ) Scenes
+
+    p.test1
+
+        a(                    
+            
+            class="btn btn-lg btn-primarybtn-block b4"
+            type = "button"
+            href = '/fashion') Fashion Board
+            
